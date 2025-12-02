@@ -3,9 +3,9 @@
 #include <chrono>
 using namespace std;
 using namespace std::chrono;
-#include "Category.h"
 
-struct Transaction {
+struct Transaction
+{
     string txid;
     // fecha de la transacción
     year_month_day date;
@@ -17,7 +17,8 @@ struct Transaction {
     string store;
 
     // operator<< para imprimir la transacción
-    friend ostream& operator<<(ostream& os, const Transaction& tx) {
+    friend ostream &operator<<(ostream &os, const Transaction &tx)
+    {
 
         int y = (int)tx.date.year();
         unsigned m = (unsigned)tx.date.month();
