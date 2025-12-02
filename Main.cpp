@@ -11,7 +11,7 @@ int main() {
     Analyzer analyzer;
 
     try {
-        analyzer.loadData();   // solo carga
+        analyzer.loadData();  
     } catch (const exception& e) {
         cerr << "Error: " << e.what() << endl;
         return 1;
@@ -22,8 +22,9 @@ int main() {
     do {
         cout << "\n--- MENU ---\n";
         cout << "1. Mostrar todos los carros\n";
-        cout << "2. Filtrar por rango de fechas\n";
-        cout << "3. Mayor transaccion\n";
+        cout << "2. Filtrar carros por fechas\n";
+        cout << "3. Carros con bajos kilometrajes\n";
+        cout << "4. Quiz de carro ideal\n";
         cout << "0. Salir\n";
         cout << "Opcion: ";
         cin >> opcion;
@@ -56,7 +57,9 @@ int main() {
             analyzer.getTopStore();
             analyzer.getTopCategory();
         }
-
+        else if (opcion == 4) {
+            // aqui va el metodo para el quiz
+        }
     } while (opcion != 0);
 
     return 0;
