@@ -3,9 +3,10 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
-
+#include "Transaction.h"
 #include "Category.h"
 #include "Analyzer.h"
+
 using namespace std;
 int main()
 {
@@ -25,12 +26,7 @@ int main()
 
     do
     {
-        cout << "\n--- MENU ---\n"
-             << endl;
-        cout << "  ______\n"
-             << " /|_||_ |.__\n"
-             << "(   _    _ _|\n"
-             << "=`-(_)--(_)- \n";
+        cout << "\n--- MENU ---\n";
         cout << "1. Mostrar todos los carros\n";
         cout << "2. Filtrar carros por fechas\n";
         cout << "3. Carros con bajos kilometrajes\n";
@@ -46,9 +42,9 @@ int main()
         else if (opcion == 2)
         {
             string ini, fin;
-            cout << "Fecha inicio (YYYY-MM-DD): ";
+            cout << "Start date (YYYY-MM-DD): ";
             cin >> ini;
-            cout << "Fecha fin (YYYY-MM-DD): ";
+            cout << "End date (YYYY-MM-DD): ";
             cin >> fin;
             try
             {
