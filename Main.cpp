@@ -26,7 +26,12 @@ int main()
 
     do
     {
-        cout << "\n--- MENU ---\n";
+        cout << "\n--- MENU ---\n"
+             << endl;
+        cout << "  ______\n"
+             << " /|_||_ |.__\n"
+             << "(   _    _ _|\n"
+             << "=`-(_)--(_)- \n";
         cout << "1. Mostrar todos los carros\n";
         cout << "2. Filtrar carros por fechas\n";
         cout << "3. Carros con bajos kilometrajes\n";
