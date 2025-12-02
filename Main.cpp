@@ -3,10 +3,13 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
+
 #include "Transaction.h"
 #include "Category.h"
 #include "Analyzer.h"
+
 using namespace std;
+
 int main() {
     Analyzer analyzer;
 
@@ -21,12 +24,12 @@ int main() {
 
     do {
         cout << "\n--- MENU ---\n";
-        cout << "1. Mostrar todos los carros\n";
-        cout << "2. Filtrar carros por fechas\n";
-        cout << "3. Carros con bajos kilometrajes\n";
-        cout << "4. Quiz de carro ideal\n";
-        cout << "0. Salir\n";
-        cout << "Opcion: ";
+        cout << "1. Show all cars\n";
+        cout << "2. Filter cars by dates\n";
+        cout << "3. Cars with low mileage\n";
+        cout << "4. Ideal car quiz\n";
+        cout << "0. Exit\n";
+        cout << "Option: ";
         cin >> opcion;
 
         if (opcion == 1) {
@@ -34,9 +37,9 @@ int main() {
         }
         else if (opcion == 2) {
             string ini, fin;
-            cout << "Fecha inicio (YYYY-MM-DD): ";
+            cout << "Start date (YYYY-MM-DD): ";
             cin >> ini;
-            cout << "Fecha fin (YYYY-MM-DD): ";
+            cout << "End date (YYYY-MM-DD): ";
             cin >> fin;
             try {
                 auto y1 = analyzer.parseDate(ini);
@@ -49,7 +52,7 @@ int main() {
                 }
             }
             catch (const exception& e) {
-                cerr << "Error al filtrar: " << e.what() << endl;
+                cerr << "Error: " << e.what() << endl;
             }
         }
         else if (opcion == 3) {
