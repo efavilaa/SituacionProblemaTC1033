@@ -23,7 +23,7 @@ public:
     vector<Transaction> filtrarRangoFechas(const year_month_day& inicio, const year_month_day& fin);
     
     void loadData(const filesystem::path& base = filesystem::current_path());
-    void printTransactions();
+    void printAll();
     void getTopDay();
     void getTopStore();
     void getTopCategory();
@@ -93,7 +93,7 @@ void Analyzer::loadData(const filesystem::path& base) {
     }
 }
 
-void Analyzer::printTransactions() {
+void Analyzer::printAll() {
     for (const auto& tx : transactions) {
         cout << tx << endl;
     }
