@@ -47,9 +47,9 @@ int main()
         else if (opcion == 2)
         {
             string ini, fin;
-            cout << "Start date (YYYY-MM-DD): ";
+            cout << "Start date (YYYY): ";
             cin >> ini;
-            cout << "End date (YYYY-MM-DD): ";
+            cout << "End date (YYYY): ";
             cin >> fin;
             try
             {
