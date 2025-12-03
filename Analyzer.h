@@ -146,13 +146,43 @@ void Analyzer::idealCarQuiz()
         minYear = stoi(yearIn);
 
     // PRICE
+    // HACER RANGO (ethiel)
     string priceIn;
-    cout << "Maximum price (or N/A): ";
+    cout << "Price range [min-max] (o N/A): ";
     cin >> priceIn;
 
-    int maxPrice = -1;
-    if (priceIn != "N/A" && priceIn != "n/a" && priceIn != "NA")
-        maxPrice = stoi(priceIn);
+    int minimo = -1;
+    int maximo = -1;
+
+    if (priceUpper != "N/A" && priceUpper != "NA" && priceUpper != "n/a" && priceUpper != "na")
+    {
+
+        size_t pos = priceIn.find('-');
+
+        if (pos == std::string::npos || pos == 0 || pos == priceIn.length() - 1)
+        {
+            std::cout << "Error: Invalid format (must be min-max).\n";
+
+            break;
+        }
+
+        try
+        {
+
+            minimo = stoi(priceIn.substr(0, pos));
+            maximo = stoi(priceIn.substr(pos + 1));
+        }
+        catch (const std::invalid_argument &e)
+        {
+            cout << "Error: Range values must be numeric.\n";
+            break;
+        }
+        catch (const std::out_of_range &e)
+        {
+            cout << "Error: Range is out of integer limits.\n";
+            break;
+        }
+    }
 
     // TRANSMISSION
     cout << "\nChoose TRANSMISSION (or 0 for N/A):\n";
@@ -177,7 +207,7 @@ void Analyzer::idealCarQuiz()
     cin >> milesIn;
 
     int maxMileage = -1;
-    if (milesIn != "N/A" && milesIn != "n/a" && milesIn != "NA")
+    if (milesIn != "N/A" && milesIn != "n/a" && milesIn != "NA" && milesIn != "na")
         maxMileage = stoi(milesIn);
 
     // FUEL TYPE
@@ -203,7 +233,7 @@ void Analyzer::idealCarQuiz()
     cin >> mpgIn;
 
     double minMPG = -1;
-    if (mpgIn != "N/A" && mpgIn != "n/a" && mpgIn != "NA")
+    if (mpgIn != "N/A" && mpgIn != "n/a" && mpgIn != "NA" && mpgIn != "na")
         minMPG = stod(mpgIn);
 
     cout << "\n=========== RESULTS ===========\n\n";
@@ -213,7 +243,8 @@ void Analyzer::idealCarQuiz()
     for (const auto &c : carros)
     {
         if ((minYear == -1 || c.year >= minYear) &&
-            (maxPrice == -1 || c.price <= maxPrice) &&
+            (maximo == -1 || c.price <= maximo) &&
+            (minimo == -1 || c.price >= minimo) &&
             (!filterTrans || c.transmission == t) &&
             (maxMileage == -1 || c.mileage <= maxMileage) &&
             (!filterFuel || c.fuelType == ft) &&
@@ -225,7 +256,7 @@ void Analyzer::idealCarQuiz()
     }
 
     if (!found)
-        cout << "No cars match your preferences. :(\n";
+        cout << "No cars match your preferences. (っ◞‸◟ c)\n";
 
     cout << "=================================\n";
 }
