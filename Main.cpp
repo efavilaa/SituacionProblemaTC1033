@@ -30,7 +30,8 @@ int main()
    / \  _   _| |_ ___ |  \/  | __ _| |_ ___| |__  
   / _ \| | | | __/ _ \| |\/| |/ _` | __/ __| '_ \ 
  / ___ \ |_| | || (_) | |  | | (_| | || (__| | | |
-/_/   \_\__,_|\__\___/|_|  |_|\__,_|\__\___|_| |_|)ascii"
+/_/   \_\__,_|\__\___/|_|  |_|\__,_|\__\___|_| |_|
+)ascii"
                   << std::endl;
 
         cout << "\n-----( MENU )-----\n"
@@ -41,8 +42,9 @@ int main()
              << "=`-(_)--(_)- \n";
         cout << "1 | Show all cars\n";
         cout << "2 | Filter cars by dates\n";
-        cout << "3 | Show cars with low mileage\n";
-        cout << "4 | Ideal car quiz\n";
+        cout << "3 | Filter cars by models\n";
+        cout << "4 | Show cars with low mileage\n";
+        cout << "5 | Ideal car quiz\n";
         cout << "0 | Exit\n";
         cout << "Option: ";
 
@@ -62,11 +64,17 @@ int main()
         }
         else if (opcion == 3)
         {
+            cout << "Cars by models\n"
+                 << "----------------" << endl;
+            analyzer.filterModel();
+        }
+        else if (opcion == 4)
+        {
             cout << "Cars with low mileage\n"
                  << "----------------" << endl;
             analyzer.lowestMileage();
         }
-        else if (opcion == 4)
+        else if (opcion == 5)
         {
             cout << "Ideal car quiz\n"
                  << "----------------" << endl;
@@ -75,7 +83,8 @@ int main()
     } while (opcion != 0);
     cout << "Bye bye! <3\n"
          << endl;
-    std::cout << R"ascii(⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡤⢤⣶⣶⣶⣶⣶⣒⣒⣀⣺⣿⣿⠿⢶⣶⣶⣶⣦⣤⣤⣤⣄⣀⣀⣀⣀⡀⠀⠀
+    std::cout << R"ascii(
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡤⢤⣶⣶⣶⣶⣶⣒⣒⣀⣺⣿⣿⠿⢶⣶⣶⣶⣦⣤⣤⣤⣄⣀⣀⣀⣀⡀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠴⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠛⠒⠲⠦⢤⣉⠙⣿⣿⣿⣟⢿⣿⠿⠿⠿⢿⣿
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣷⡦⠞⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡇⠀⠈⠛⢿⣿⡀⠀⠀⠀⠻
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣤⠤⢴⣿⣉⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠙⣿⣄⡀⠀⠀
@@ -95,6 +104,7 @@ int main()
 ⠀⠀⠀⠀⠀⠀⠈⠙⠢⢬⣙⠛⠧⢤⣀⣀⠀⢀⣴⠃⠀⢀⣹⢦⣤⣉⣉⣯⣍⣹⣿⣿⣿⡃⣀⡤⠴⠛⠋⠁⠀⡇⠘⣜⣏⣠⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠓⠦⢤⣈⡉⠉⠙⠛⠛⠛⠲⠤⠤⠤⠴⣶⣶⣿⣿⢿⡿⣯⠀⠀⠀⠀⠀⢀⣠⡟⠤⠿⠟⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠒⠲⠤⢤⣄⣀⣀⣀⣤⣈⣤⣤⠤⣴⣿⣥⠤⠴⠒⠚⠋⠉⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-)ascii" << std::endl;
+)ascii" 
+            << std::endl;
     return 0;
 }

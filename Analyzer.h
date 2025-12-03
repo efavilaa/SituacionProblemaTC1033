@@ -27,6 +27,8 @@ public:
     void printAll();
     // filtrar por fechas
     void filterDates();
+    // filtrar por modelo
+    void filterModel();
     // top carros con bajos kilometrajes
     void lowestMileage();
     // quiz carro ideal
@@ -112,6 +114,60 @@ void Analyzer::filterDates()
             cout << c << endl;
     }
 }
+
+void Analyzer::filterModel()
+{
+    cout << "\nChoose a model:\n";
+    cout << "----------------\n";
+    cout << " 1) GT86\n";
+    cout << " 2) Corolla\n";
+    cout << " 3) RAV4\n";
+    cout << " 4) Yaris\n";
+    cout << " 5) Auris\n";
+    cout << " 6) Aygo\n";
+    cout << " 7) C-HR\n";
+    cout << " 8) Prius\n";
+    cout << " 9) Avensis\n";
+    cout << "10) Verso\n";
+    cout << "11) Hilux\n";
+    cout << "12) PROACE VERSO\n";
+    cout << "13) Land Cruiser\n";
+    cout << "14) Supra\n";
+    cout << "15) Camry\n";
+    cout << "16) Verso-S\n";
+    cout << "17) IQ\n";
+    cout << "18) Urban Cruiser\n";
+
+    int opcion;
+    cout << "\nOption: ";
+    cin >> opcion;
+
+    if (opcion < 1 || opcion > 18)
+    {
+        cout << "Invalid option.\n";
+        return;
+    }
+
+    // convertir num a enum
+    Model chosen = static_cast<Model>(opcion - 1);
+
+    cout << "\nCars of model: " << modelToString(chosen) << "\n";
+    cout << "--------------------------------------\n";
+
+    bool found = false;
+    for (const auto& c : carros)
+    {
+        if (c.model == chosen)
+        {
+            cout << c << endl;
+            found = true;
+        }
+    }
+
+    if (!found)
+        cout << "No cars found with that model.\n";
+}
+
 
 // top carros con bajos kilometrajes (FALTA)
 void Analyzer::lowestMileage()
