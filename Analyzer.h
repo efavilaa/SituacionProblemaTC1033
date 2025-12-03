@@ -193,6 +193,35 @@ void Analyzer::idealCarQuiz(const std::string &outputFilename)
     cout << "        IDEAL CAR QUIZ\n";
     cout << "==============================\n\n";
 
+    // MODEL
+    cout << "\nChoose MODEL (or 0 for N/A):\n";
+    cout << "  1) GT86\n";
+    cout << "  2) Corolla\n";
+    cout << "  3) RAV4\n";
+    cout << "  4) Yaris\n";
+    cout << "  5) Auris\n";
+    cout << "  6) Aygo\n";
+    cout << "  7) C-HR\n";
+    cout << "  8) Prius\n";
+    cout << "  9) Avensis\n";
+    cout << " 10) Verso\n";
+    cout << " 11) Hilux\n";
+    cout << " 12) PROACE VERSO\n";
+    cout << " 13) Land Cruiser\n";
+    cout << " 14) Supra\n";
+    cout << " 15) Camry\n";
+    cout << " 16) Verso-S\n";
+    cout << " 17) IQ\n";
+    cout << " 18) Urban Cruiser\n";
+
+    int modelChoice;
+    cin >> modelChoice;
+
+    bool filterModelQuiz = (modelChoice != 0);
+    Model modelQ;
+    if (filterModelQuiz)
+        modelQ = static_cast<Model>(modelChoice - 1);
+
     // YEAR
     string yearIn;
     cout << "Minimum year (or N/A): ";
@@ -300,6 +329,7 @@ void Analyzer::idealCarQuiz(const std::string &outputFilename)
             (maximo == -1 || c.price <= maximo) &&
             (minimo == -1 || c.price >= minimo) &&
             (!filterTrans || c.transmission == t) &&
+            (!filterModelQuiz || c.model == modelQ) &&  
             (maxMileage == -1 || c.mileage <= maxMileage) &&
             (!filterFuel || c.fuelType == ft) &&
             (minMPG == -1 || c.mpg >= minMPG))
