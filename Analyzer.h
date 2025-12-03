@@ -146,7 +146,7 @@ void Analyzer::idealCarQuiz()
         minYear = stoi(yearIn);
 
     // PRICE
-    // HACER RANGO (ethiel)
+
     string priceIn;
     cout << "Price range [min-max] (o N/A): ";
     cin >> priceIn;
@@ -154,7 +154,7 @@ void Analyzer::idealCarQuiz()
     int minimo = -1;
     int maximo = -1;
 
-    if (priceUpper != "N/A" && priceUpper != "NA" && priceUpper != "n/a" && priceUpper != "na")
+    if (priceIn != "N/A" && priceIn != "NA" && priceIn != "n/a" && priceIn != "na")
     {
 
         size_t pos = priceIn.find('-');
@@ -162,8 +162,6 @@ void Analyzer::idealCarQuiz()
         if (pos == std::string::npos || pos == 0 || pos == priceIn.length() - 1)
         {
             std::cout << "Error: Invalid format (must be min-max).\n";
-
-            break;
         }
 
         try
@@ -175,12 +173,10 @@ void Analyzer::idealCarQuiz()
         catch (const std::invalid_argument &e)
         {
             cout << "Error: Range values must be numeric.\n";
-            break;
         }
         catch (const std::out_of_range &e)
         {
             cout << "Error: Range is out of integer limits.\n";
-            break;
         }
     }
 
