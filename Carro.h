@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
-#include <chrono>
-using namespace std;
-using namespace std::chrono;
+#include <iostream>
+
+#include "Model.h"
 #include "Transmission.h"
 #include "fuelType.h"
 
@@ -20,18 +20,17 @@ struct Carro {
 
 
     // operator<< para imprimir todos los datos de los carros
-    friend ostream& operator<<(ostream& os, const Carro& tx) {
-
-        os << "Model = " << tx.txid
-           << " | Year = " << y << "-" << m << "-" << d
-           << " | Price = " << static_cast<int>(tx.category)
-           << " | Transmission = " << tx.amount
-           << " | Mileage = " << tx.store
-           << " | Fuel Type = " << tx.store
-           << " | Tax = " << tx.store
-           << " | MPG = " << tx.store
-           << " | Engine Size = " << tx.store;
-
+    friend std::ostream& operator<<(std::ostream& os, const Carro& c) {
+        os << "Model = " << modelToString(c.model)
+        << " | Year = " << c.year
+        << " | Price = " << c.price
+        << " | Transmission = " << transmissionToString(c.transmission)
+        << " | Mileage = " << c.mileage
+        << " | Fuel Type = " << fuelTypeToString(c.fuelType)
+        << " | Tax = " << c.tax
+        << " | MPG = " << c.mpg
+        << " | Engine Size = " << c.engineSize;
         return os;
     }
+
 };

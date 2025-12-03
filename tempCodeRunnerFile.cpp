@@ -25,42 +25,38 @@ int main()
 
     do
     {
-        cout << "\n-----( MENU )-----\n"
+        cout << "\n─ ⊹ ⊱꒰ MENU ꒱⊰ ⊹ ─\n"
              << endl;
         cout << "  ______\n"
              << " /|_||_ |.__\n"
              << "(   _    _ _|\n"
              << "=`-(_)--(_)- \n";
-        cout << "1 | Show all cars\n";
-        cout << "2 | Filter cars by dates\n";
-        cout << "3 | Show cars with low mileage\n";
-        cout << "4 | Ideal car quiz\n";
-        cout << "0 | Exit\n";
+        cout << "1 ⋆ Show all cars\n";
+        cout << "2 ⋆ Filter cars by dates\n";
+        cout << "3 ⋆ Show cars with low mileage\n";
+        cout << "4 ⋆ Ideal car quiz\n";
+        cout << "0 ⋆ Exit\n";
         cout << "Option: ";
 
         cin >> opcion;
 
         if (opcion == 1)
         {
-            cout << "All cars\n" << "----------------" << endl;
-            analyzer.printAll();
+            cout << "All cars\n" << "· · ─ ·ʚɞ· ─ · ·" << endl;
         }
         else if (opcion == 2)
         {
-            cout << "Cars by dates\n" << "----------------" << endl;
-            analyzer.filterDates();
+            cout << "Cars by dates\n" << "· · ─ ·ʚɞ· ─ · ·" << endl;
         }
         else if (opcion == 3)
         {
-            cout << "Cars with low mileage\n" << "----------------" << endl;
-            analyzer.lowestMileage();
+            cout << "Cars with low mileage\n" << "· · ─ ·ʚɞ· ─ · ·" << endl;
         }
         else if (opcion == 4)
         {
-            cout << "Ideal car quiz\n" << "----------------" << endl;
-            analyzer.idealCarQuiz();
+            cout << "Quiz de carro ideal\n" << "· · ─ ·ʚɞ· ─ · ·" << endl;
         }
     } while (opcion != 0);
-    cout << "Bye bye! <3\n" << endl;
+    cout << "Bye bye!\n" << "· · ─ ·ʚɞ· ─ · ·" << endl;
     return 0;
 }
