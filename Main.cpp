@@ -20,12 +20,7 @@ int main()
         cerr << "Error: " << e.what() << endl;
         return 1;
     }
-
-    int opcion;
-
-    do
-    {
-        std::cout << R"ascii(
+    std::cout << R"ascii(
     _         _        __  __       _       _     
    / \  _   _| |_ ___ |  \/  | __ _| |_ ___| |__  
   / _ \| | | | __/ _ \| |\/| |/ _` | __/ __| '_ \ 
@@ -34,6 +29,10 @@ int main()
 )ascii"
                   << std::endl;
 
+    int opcion;
+
+    do
+    {
         cout << "\n-----( MENU )-----\n"
              << endl;
         cout << "  ______\n"
