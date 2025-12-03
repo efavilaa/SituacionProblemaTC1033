@@ -32,8 +32,8 @@ public:
     void idealCarQuiz();
 };
 
-// cargar datos (REVISAR!!!!!!!!!! NO ESTA LISTO, TIENE MUCHAS COSAS QUE NI AL CASO)
-void Analyzer::loadData(const filesystem::path& base)
+// cargar datos
+void Analyzer::loadData(const filesystem::path &base)
 {
     filesystem::path file = base / "toyota.csv";
 
@@ -41,24 +41,31 @@ void Analyzer::loadData(const filesystem::path& base)
         throw runtime_error("toyota.csv not found");
 
     ifstream in(file);
-    if (!in) throw runtime_error("Cannot open toyota.csv");
+    if (!in)
+        throw runtime_error("Cannot open toyota.csv");
 
     string line;
     bool first = true;
 
-    while (getline(in, line)) {
-        if (first) {  // saltar header
+    while (getline(in, line))
+    {
+        if (first)
+        { // saltar header
             first = false;
             continue;
         }
 
         vector<string> f;
         string temp;
-        for (char c : line) {
-            if (c == ',') {
+        for (char c : line)
+        {
+            if (c == ',')
+            {
                 f.push_back(temp);
                 temp.clear();
-            } else temp += c;
+            }
+            else
+                temp += c;
         }
         f.push_back(temp);
 
@@ -90,38 +97,44 @@ void Analyzer::printAll()
 }
 
 // filtrar por fechas
-void Analyzer::filterDates() {
+void Analyzer::filterDates()
+{
     int a, b;
     cout << "Start year: ";
     cin >> a;
     cout << "End year: ";
     cin >> b;
 
-    for (const auto& c : carros) {
+    for (const auto &c : carros)
+    {
         if (c.year >= a && c.year <= b)
             cout << c << endl;
     }
 }
 
 // top carros con bajos kilometrajes (FALTA)
-void Analyzer::lowestMileage() {
-    sort(carros.begin(), carros.end(), 
-        [](const Carro& x, const Carro& y){
-            return x.mileage < y.mileage;
-        });
+void Analyzer::lowestMileage()
+{
+    sort(carros.begin(), carros.end(),
+         [](const Carro &x, const Carro &y)
+         {
+             return x.mileage < y.mileage;
+         });
 
     cout << "Top 5 lowest mileage cars:\n";
-    for (int i = 0; i < 5 && i < carros.size(); i++) {
+    for (int i = 0; i < 5 && i < carros.size(); i++)
+    {
         cout << carros[i] << endl;
     }
 }
 
 // quiz carro ideal (FALTA)
-void Analyzer::idealCarQuiz() {
+void Analyzer::idealCarQuiz()
+{
 
     cout << "\n==============================\n";
-    cout <<   "        IDEAL CAR QUIZ\n";
-    cout <<   "==============================\n\n";
+    cout << "        IDEAL CAR QUIZ\n";
+    cout << "==============================\n\n";
 
     // YEAR
     string yearIn;
@@ -151,9 +164,12 @@ void Analyzer::idealCarQuiz() {
 
     bool filterTrans = (tChoice != 0);
     Transmission t;
-    if (tChoice == 1) t = Transmission::Automatic;
-    else if (tChoice == 2) t = Transmission::Manual;
-    else if (tChoice == 3) t = Transmission::Semi_Auto;
+    if (tChoice == 1)
+        t = Transmission::Automatic;
+    else if (tChoice == 2)
+        t = Transmission::Manual;
+    else if (tChoice == 3)
+        t = Transmission::Semi_Auto;
 
     // MILEAGE
     string milesIn;
@@ -174,9 +190,12 @@ void Analyzer::idealCarQuiz() {
 
     bool filterFuel = (fChoice != 0);
     FuelType ft;
-    if (fChoice == 1) ft = FuelType::Petrol;
-    else if (fChoice == 2) ft = FuelType::Hybrid;
-    else if (fChoice == 3) ft = FuelType::Diesel;
+    if (fChoice == 1)
+        ft = FuelType::Petrol;
+    else if (fChoice == 2)
+        ft = FuelType::Hybrid;
+    else if (fChoice == 3)
+        ft = FuelType::Diesel;
 
     // MPG
     string mpgIn;
@@ -191,7 +210,8 @@ void Analyzer::idealCarQuiz() {
 
     bool found = false;
 
-    for (const auto& c : carros) {
+    for (const auto &c : carros)
+    {
         if ((minYear == -1 || c.year >= minYear) &&
             (maxPrice == -1 || c.price <= maxPrice) &&
             (!filterTrans || c.transmission == t) &&
