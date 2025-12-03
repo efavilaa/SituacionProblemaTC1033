@@ -9,6 +9,7 @@
 using namespace std;
 using namespace std::chrono;
 #include "splitCommas.h"
+#include <sstream>
 
 #include "Carro.h"
 
@@ -29,7 +30,7 @@ public:
     // top carros con bajos kilometrajes
     void lowestMileage();
     // quiz carro ideal
-    void idealCarQuiz();
+    void idealCarQuiz(const std::string &outputFilename = "reporte_coches_ideales.txt");
 };
 
 // cargar datos
@@ -128,8 +129,8 @@ void Analyzer::lowestMileage()
     }
 }
 
-// quiz carro ideal (FALTA)
-void Analyzer::idealCarQuiz()
+// quiz carro ideal
+void Analyzer::idealCarQuiz(const std::string &outputFilename)
 {
 
     cout << "\n==============================\n";
@@ -232,7 +233,8 @@ void Analyzer::idealCarQuiz()
     if (mpgIn != "N/A" && mpgIn != "n/a" && mpgIn != "NA" && mpgIn != "na")
         minMPG = stod(mpgIn);
 
-    cout << "\n=========== RESULTS ===========\n\n";
+    std::stringstream reportStream;
+    reportStream << "\n=========== RESULTS ===========\n\n";
 
     bool found = false;
 
@@ -246,13 +248,42 @@ void Analyzer::idealCarQuiz()
             (!filterFuel || c.fuelType == ft) &&
             (minMPG == -1 || c.mpg >= minMPG))
         {
-            cout << c << "\n";
+            reportStream << c << "\n";
             found = true;
         }
     }
 
     if (!found)
-        cout << "No cars match your preferences. (っ◞‸◟ c)\n";
+        reportStream << "No cars match your preferences. (っ◞‸◟ c)\n";
 
+    reportStream << "=================================\n";
     cout << "=================================\n";
+
+    std::cout << reportStream.str();
+
+    // ask if they want to export
+    string choice;
+    cout << "\n¿Do you wish to save the report? (Y/N): ";
+    cin >> choice;
+
+    std::transform(choice.begin(), choice.end(), choice.begin(), ::toupper);
+
+    if (choice == "Y" || choice == "yes" || choice == "YES" || choice == "y")
+    {
+        std::string filename;
+        std::cout << "Enter the filename (e.g., report.txt): ";
+        std::cin >> filename;
+
+        std::ofstream outFile(filename);
+
+        if (!outFile)
+        {
+            std::cerr << "Error: Could not open file for writing: " << filename << "\n";
+            return;
+        }
+
+        outFile << reportStream.str();
+
+        std::cout << "Report saved  to '" << filename << "'\n";
+    }
 }
