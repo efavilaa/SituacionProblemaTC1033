@@ -263,7 +263,7 @@ void Analyzer::idealCarQuiz(const std::string &outputFilename)
 
     // ask if they want to export
     string choice;
-    cout << "\n¿Do you wish to save the report? (Y/N): ";
+    cout << "\nDo you wish to save the report? (Y/N): ";
     cin >> choice;
 
     std::transform(choice.begin(), choice.end(), choice.begin(), ::toupper);
